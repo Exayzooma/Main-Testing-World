@@ -75,8 +75,7 @@ GameObject:
   - component: {fileID: 5614330838365757786}
   - component: {fileID: 5614330838365757787}
   - component: {fileID: 5614330838365757788}
-  - component: {fileID: 1659808622}
-  - component: {fileID: 5614330837867776569}
+  - component: {fileID: 2481217120916953510}
   m_Layer: 8
   m_Name: Punk
   m_TagString: Untagged
@@ -140,7 +139,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1343673127
-  m_SortingLayer: 1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -343884649, guid: 1aca0097661da7a40977a551c6838f3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -220,7 +219,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &1659808622
+--- !u!114 &2481217120916953510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,53 +228,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5614330838365757776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d40778d462ad5ee40959bfeb4a359268, type: 3}
+  m_Script: {fileID: 11500000, guid: 4922470031ea77947a0d903fef8ca336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 5614330837867776569}
   animator: {fileID: 5614330838365757786}
-  moveForce: 50
-  myBody: {fileID: 5614330838365757788}
-  LayerMask:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!114 &5614330837867776569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5614330838365757776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd7f761f1546e74a9c7c9cfbc2c2181, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_JumpForce: 400
-  m_CrouchSpeed: 0.36
-  m_MovementSmoothing: 0.05
-  m_AirControl: 1
-  m_WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 119
-  m_GroundCheck: {fileID: 1463393908}
-  m_CeilingCheck: {fileID: 1309962706}
-  m_CrouchDisableCollider: {fileID: 0}
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1659808622}
-        m_TargetAssemblyTypeName: Punk, Assembly-CSharp
-        m_MethodName: OnLanding
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnCrouchEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  movementSpeed: 2
+  jumpforce: 10

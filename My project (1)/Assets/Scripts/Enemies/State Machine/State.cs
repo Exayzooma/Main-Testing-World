@@ -8,12 +8,11 @@ public class State
     protected Entity entity;
 
     protected float startTime;
-
     protected string animBoolName;
 
-    public State(Entity entity, FiniteStateMachine stateMachine, string animBoolName)
+    public State(Entity etity, FiniteStateMachine stateMachine, string animBoolName)
     {
-        this.entity = entity;
+        this.entity = etity;
         this.stateMachine = stateMachine;
         this.animBoolName = animBoolName;
     }

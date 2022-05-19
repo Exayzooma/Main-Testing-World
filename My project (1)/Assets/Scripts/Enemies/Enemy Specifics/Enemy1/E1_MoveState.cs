@@ -4,8 +4,37 @@ using UnityEngine;
 
 public class E1_MoveState : MoveState
 {
-	public E1_MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(entity, stateMachine, animBoolName, stateData)
+	private Enemy1 enemy;
+	public E1_MoveState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData, Enemy1 enemy) : base(etity, stateMachine, animBoolName, stateData)
 	{
-
+		this.enemy = enemy;
 	}
+
+    public override void Enter()
+    {
+        base.Enter();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+
+        if (isDetectingWall || !isDetectingLedge)
+        {
+            enemy.IdleState.SetFlipAfterIdle(true);
+            stateMachine.ChangeState(enemy.IdleState);
+        }
+
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+
+    }
 }

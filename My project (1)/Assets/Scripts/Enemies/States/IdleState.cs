@@ -6,11 +6,11 @@ public class IdleState : State
 {
     protected D_IdleState stateData;
 
-    protected bool flipafterIdle;
+    protected bool flipAfterIdle;
     protected float idleTime;
     protected bool isIdleTimeOver;
 
-    public IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData) : base(entity, stateMachine, animBoolName)
+    public IdleState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData) : base(etity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
 
@@ -28,7 +28,7 @@ public class IdleState : State
     {
         base.Exit();
 
-        if (flipafterIdle)
+        if (flipAfterIdle)
         {
             entity.Flip();
         }
@@ -38,9 +38,9 @@ public class IdleState : State
     {
         base.LogicUpdate();
 
-        if (Time. time >= startTime + idleTime)
+        if (Time.time >= startTime + idleTime)
         {
-            flipafterIdle = true;
+            flipAfterIdle = true;
         }
     }
 
@@ -51,7 +51,7 @@ public class IdleState : State
 
     public void SetFlipAfterIdle(bool flip)
     {
-        flipafterIdle = flip;
+        flipAfterIdle = flip;
     }
 
     private void SetRandomIdleTime ()

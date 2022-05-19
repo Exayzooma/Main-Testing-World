@@ -14,20 +14,21 @@ public class Entity : MonoBehaviour
 
     public Animator anim { get; private set; }
 
-    public GameObject GO { get; private set; }
+    public GameObject HealthyGO { get; private set; }
 
     [SerializeField]
     private Transform wallCheck;
     [SerializeField]
-    private Transform LedgeCheck;
+    private Transform ledgeCheck;
 
     private Vector2 velocityWorkspace;
 
     public virtual void Start()
     {
-        GO = transform.Find("Healthy").gameObject;
-        rb = GO.GetComponent<Rigidbody2D>();
-        anim = GO.GetComponent<Animator>();
+        facingDirection = 1;
+        HealthyGO = transform.Find("Healthy").gameObject;
+        rb = HealthyGO.GetComponent<Rigidbody2D>();
+        anim = HealthyGO.GetComponent<Animator>();
 
         stateMachine = new FiniteStateMachine();
     }
@@ -50,18 +51,24 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckWall()
     {
-        return Physics2D.Raycast(wallCheck.position, GO.transform.right, entityData.wallCheckDistance, entityData.whatIsGound);
+        return Physics2D.Raycast(wallCheck.position, HealthyGO.transform.right, entityData.wallCheckDistance, entityData.whatIsGound);
 
     }
 
     public virtual bool CheckLedge()
     {
-        return Physics2D.Raycast(LedgeCheck.position, Vector2.down, entityData.ledgeCheckDistance, entityData.whatIsGound);
+        return Physics2D.Raycast(ledgeCheck.position, Vector2.down, entityData.ledgeCheckDistance, entityData.whatIsGound);
     }
 
     public virtual void Flip()
     {
-        facingDirection *=1;
-        GO.transform.Rotate(0f, 180f, 0f);
+        facingDirection *= -1;
+        HealthyGO.transform.Rotate(0f, 180f, 0f);
+    }
+
+    public virtual void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.wallCheckDistance));
+        Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down  * entityData.ledgeCheckDistance));
     }
 }
