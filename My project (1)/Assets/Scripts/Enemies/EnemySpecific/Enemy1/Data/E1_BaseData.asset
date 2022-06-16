@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f52476b661c02a94a82dab88378e76b2, type: 3}
-  m_Name: E1_IdleStateData
+  m_Script: {fileID: 11500000, guid: 64af64e93faede841afcec11589be362, type: 3}
+  m_Name: E1_BaseData
   m_EditorClassIdentifier: 
-  minIdleTime: 1
-  maxIdleTime: 1
+  wallCheckdistance: 0.5
+  ledgeCheckdistance: 0.4
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64

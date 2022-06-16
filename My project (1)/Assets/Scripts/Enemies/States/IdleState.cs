@@ -7,28 +7,28 @@ public class IdleState : State
     protected D_IdleState stateData;
 
     protected bool flipAfterIdle;
-    protected float idleTime;
     protected bool isIdleTimeOver;
 
-    public IdleState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData) : base(etity, stateMachine, animBoolName)
+    protected float idleTime;
+    public IdleState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_IdleState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
-
-        entity.SetVelocity(0f);
-        isIdleTimeOver = false; 
-        SetRandomIdleTime();
     }
 
     public override void Enter()
     {
         base.Enter();
+
+        entity.SetVelocity(0f);
+        isIdleTimeOver = false;
+        setRandomIdleTime();
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        if (flipAfterIdle)
+        if(flipAfterIdle)
         {
             entity.Flip();
         }
@@ -38,9 +38,9 @@ public class IdleState : State
     {
         base.LogicUpdate();
 
-        if (Time.time >= startTime + idleTime)
+        if(Time.time >= startTime + idleTime)
         {
-            flipAfterIdle = true;
+            isIdleTimeOver = true;
         }
     }
 
@@ -49,12 +49,12 @@ public class IdleState : State
         base.PhysicsUpdate();
     }
 
-    public void SetFlipAfterIdle(bool flip)
+    public void setFlipAfterIdle(bool flip)
     {
         flipAfterIdle = flip;
     }
 
-    private void SetRandomIdleTime ()
+    private void setRandomIdleTime()
     {
         idleTime = Random.Range(stateData.minIdleTime, stateData.maxIdleTime);
     }

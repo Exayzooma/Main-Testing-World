@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FiniteStateMachine 
+public class FiniteStateMachine
 {
     public State currentState { get; private set; }
 
@@ -12,7 +12,7 @@ public class FiniteStateMachine
         currentState.Enter();
     }
 
-    public void ChangeState(State newState)
+    public void changeState(State newState)
     {
         currentState.Exit();
         currentState = newState;

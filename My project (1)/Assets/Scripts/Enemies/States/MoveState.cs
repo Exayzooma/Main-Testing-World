@@ -9,7 +9,7 @@ public class MoveState : State
     protected bool isDetectingWall;
     protected bool isDetectingLedge;
 
-    public MoveState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(etity, stateMachine, animBoolName)
+    public MoveState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(entity, stateMachine, animBoolName)
     {
         this.stateData = stateData;
     }
@@ -36,7 +36,6 @@ public class MoveState : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-
 
         isDetectingLedge = entity.CheckLedge();
         isDetectingWall = entity.CheckWall();

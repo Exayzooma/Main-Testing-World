@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    public int facingDirection { get; private set; }
 
     public FiniteStateMachine stateMachine;
 
     public D_Entity entityData;
 
+    public int facingDirection { get; private set; }
     public Rigidbody2D rb { get; private set; }
-
     public Animator anim { get; private set; }
-
-    public GameObject HealthyGO { get; private set; }
+    public GameObject Healthy { get; private set; }
 
     [SerializeField]
     private Transform wallCheck;
@@ -25,10 +23,9 @@ public class Entity : MonoBehaviour
 
     public virtual void Start()
     {
-        facingDirection = 1;
-        HealthyGO = transform.Find("Healthy").gameObject;
-        rb = HealthyGO.GetComponent<Rigidbody2D>();
-        anim = HealthyGO.GetComponent<Animator>();
+        Healthy = transform.Find("Healthy").gameObject;
+        rb = Healthy.GetComponent<Rigidbody2D>();
+        anim = Healthy.GetComponent<Animator>();
 
         stateMachine = new FiniteStateMachine();
     }
@@ -51,24 +48,23 @@ public class Entity : MonoBehaviour
 
     public virtual bool CheckWall()
     {
-        return Physics2D.Raycast(wallCheck.position, HealthyGO.transform.right, entityData.wallCheckDistance, entityData.whatIsGound);
-
+        return Physics2D.Raycast(wallCheck.position, Healthy.transform.right, entityData.wallCheckdistance, entityData.whatIsGround);
     }
 
     public virtual bool CheckLedge()
     {
-        return Physics2D.Raycast(ledgeCheck.position, Vector2.down, entityData.ledgeCheckDistance, entityData.whatIsGound);
+        return Physics2D.Raycast(ledgeCheck.position, Vector2.down, entityData.ledgeCheckdistance, entityData.whatIsGround);
     }
 
     public virtual void Flip()
     {
         facingDirection *= -1;
-        HealthyGO.transform.Rotate(0f, 180f, 0f);
+        Healthy.transform.Rotate(0f, 180f, 0f);
     }
 
     public virtual void OnDrawGizmos()
     {
-        Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.wallCheckDistance));
-        Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down  * entityData.ledgeCheckDistance));
+        Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDirection * entityData.wallCheckdistance));
+        Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * entityData.ledgeCheckdistance));
     }
 }
