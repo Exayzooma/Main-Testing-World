@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FiniteStateMachine 
+public class FiniteStateMachine
 {
-    public State currentstate { get; private set; }
+    public State currentState { get; private set; }
 
-    public void initialize(State startingstate)
+    public void Initialize(State startingState)
     {
-        currentstate = startingstate;
-        currentstate.Enter();
+        currentState = startingState;
+        currentState.Enter();
     }
 
-    public void changestate(State newstate)
+    public void ChangeState(State newState)
     {
-        currentstate.Exit();
-        currentstate = newstate;
-        currentstate.Enter();
+        currentState.Exit();
+        currentState = newState;
+        currentState.Enter();
     }
 }

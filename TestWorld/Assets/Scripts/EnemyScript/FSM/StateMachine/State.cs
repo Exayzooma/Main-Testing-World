@@ -2,30 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State 
+public class State
 {
-    protected FiniteStateMachine statemachine;
+    protected FiniteStateMachine stateMachine;
     protected Entity entity;
 
-    protected float starttime;
-    protected string animboolname;
+    protected float startTime;
 
-    public State(Entity entity, FiniteStateMachine statemachine, string animboolname)
+    protected string animBoolName;
+
+    public State(Entity etity, FiniteStateMachine stateMachine, string animBoolName)
     {
-        this.entity = entity;
-        this.statemachine = statemachine;
-        this.animboolname = animboolname;
+        this.entity = etity;
+        this.stateMachine = stateMachine;
+        this.animBoolName = animBoolName;
     }
 
     public virtual void Enter()
     {
-        starttime = Time.time;
-        entity.anim.SetBool(animboolname, true);
+        startTime = Time.time;
+        entity.anim.SetBool(animBoolName, true);
     }
 
     public virtual void Exit()
     {
-        entity.anim.SetBool(animboolname, false);
+        entity.anim.SetBool(animBoolName, false);
     }
 
     public virtual void LogicUpdate()
